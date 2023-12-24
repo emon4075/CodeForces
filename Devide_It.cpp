@@ -36,6 +36,6 @@ int main()
     else{
       cout<<count<<endl;
     }
-  }       
+  }
   return 0;
 }
