@@ -1,14 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 int main()
 {
     int T;
     cin >> T;
     while (T--)
     {
-        int Min, Mid, Max;
-        cin >> Min >> Mid >> Max;
-        if ((Min + Mid + Max) % 2 == 1)
+        int A[3];
+        cin >> A[0] >> A[1] >> A[2];
+
+        if ((A[0] + A[1] + A[2]) == 0)
+        {
+            cout << 0 << endl;
+        }
+        else if ((A[0] + A[1] + A[2]) % 2 == 1)
         {
             cout << -1 << endl;
         }
@@ -17,28 +23,14 @@ int main()
             int Count = 0;
             while (1)
             {
-                if (Min != 0 && Max != 0)
-                {
-                    Count++;
-                    Min--;
-                    Max--;
-                }
-                if (Min != 0 && Mid != 0)
-                {
-                    Count++;
-                    Min--;
-                    Mid--;
-                }
-                if (Mid != 0 && Max != 0)
-                {
-                    Count++;
-                    Mid--;
-                    Max--;
-                }
-                if ((Min == 0 && Mid == 0) || (Min == 0 && Max == 0) || (Mid == 0 && Max == 0))
+                sort(A, A + 3);
+                if (A[0] == 0 && A[1] == 0)
                 {
                     break;
                 }
+                Count++;
+                A[1]--;
+                A[2]--;
             }
             cout << Count << endl;
         }
