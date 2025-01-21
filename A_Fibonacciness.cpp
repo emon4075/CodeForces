@@ -16,24 +16,6 @@ void FASTIO()
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 }
-int Calculate_Fibo(int A, int B, int C, int D, int E)
-{
-    int Count = 0;
-    if (A + B == C)
-    {
-        Count++;
-    }
-    if (B + C == D)
-    {
-        Count++;
-    }
-    if (C + D == E)
-    {
-        Count++;
-    }
-    return Count;
-}
-
 int main()
 {
     FASTIO();
@@ -41,16 +23,18 @@ int main()
     cin >> T;
     while (T--)
     {
-        int A1, A2, A3, A4, A5;
-        cin >> A1 >> A2 >> A4 >> A5;
-        int Max = INT_MIN;
-
-        for (int i = -100; i <= 100; i++)
-        {
-            A3 = i;
-            Max = max(Max, Calculate_Fibo(A1, A2, A3, A4, A5));
-        }
-        cout << Max << endl;
+        int A, B, D, E, Result[3];
+        cin >> A >> B >> D >> E;
+        Result[0] = A + B;
+        Result[1] = D - B;
+        Result[2] = E - D;
+        sort(Result, Result + 3);
+        if (Result[0] == Result[2])
+            cout << 3 << endl;
+        else if (Result[0] == Result[1] || Result[1] == Result[2] || Result[0] == Result[2])
+            cout << 2 << endl;
+        else
+            cout << 1 << endl;
     }
     return 0;
 }
